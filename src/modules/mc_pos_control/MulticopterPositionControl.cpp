@@ -478,7 +478,8 @@ void MulticopterPositionControl::start_flight_task()
 	}
 
 	// Switch to clean new task when mode switches e.g. to reset state when switching between auto modes
-	if (_last_vehicle_nav_state != _vehicle_status.nav_state) {
+	if (_last_vehicle_nav_state != _vehicle_status.nav_state
+	    && _vehicle_status.nav_state != vehicle_status_s::NAVIGATION_STATE_ORBIT) {
 		_flight_tasks.switchTask(FlightTaskIndex::None);
 	}
 
